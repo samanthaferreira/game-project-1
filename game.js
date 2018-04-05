@@ -105,35 +105,24 @@ Game.prototype.purgeAliens = function(){  //delete aliens that are not visible i
 
 Game.prototype.detectCollisions = function(){
   var self = this;
+  
   self.aliens.forEach = function(alien){ 
     var player = {
-      leftEdge: self.player.position.x,
-      rightEdge: self.player.position.x + self.player.size.x,
-      topEdge: self.player.position.y,
-      bottomEdge: self.player.position.y + self.player.size.y
+      side1: self.player.position.x,
+      side2: self.player.position.x + self.player.size,
+      side3: self.player.position.y,
+     side4: self.player.position.y + self.player.size
     }
     var alien = {
-      leftEdge: aliens.position.x,
-      rightEdge: aliens.position.x + aliens.size.x,
-      topEdge: aliens.position.y,
-      bottomEdge: aliens.position.y + aliens.size.y
+      side1: aliens.position.x,
+      side2: aliens.position.x + aliens.size,
+      side3: aliens.position.y,
+      side4: aliens.position.y + aliens.size
     }
-    if(alien.leftEdge < player.leftEdge && player.leftEdge < alien.rightEdge){
-      if(alien.topEdge < player.topEdge && player.topEdge < alien.bottomEdge ){
-        console.log('buiggh');
-      }
-      if (alien.topEdge < player.bottomEdge && player.bottomEdge < alien.bottomEdge) {
-        console.log("gyi;g;");
-      }
-    }
-    if(alien.leftEdge < player.rightEdge && player.rightEdge < alien.rightEdge){
-      if (alien.topEdge < player.topEdge && player.topEdge < alien.bottomEdge){
-        console.log("jiohioha");
-      }
-      if(alien.topEdge < player.bottomEdge && player.bottomEdge < alien.bottomEdge){
-        console.log('huoikl');
-      }
-    }
+  if(alien.side1 < player.side2 && alien.side2 > player.side1 &&
+  alien.side3 < player.side4 && alien.side4 > player.side3){}
+      
+    
   };
 };
 
@@ -141,15 +130,15 @@ Game.prototype.detectMoonLanding = function() {
   var self = this;
 
   if (self.moon && self.moon.position.y === -26){
-    self.isFinished = true;
+    self.gameOver(true);
   }
 };
 
-Game.prototype.destroy = function(didWin){ 
+Game.prototype.gameOver = function(didWin){ 
   var self = this;
   window.clearInterval(self.createAliensIntervalId);
   self.isFinished = true;
-  (self.didWin);
+  self.callbackFunction(self.didWin);
 };
 
 Game.prototype.destroy = function(){ //destroy game page

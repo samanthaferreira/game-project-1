@@ -18,6 +18,12 @@ p {
   font-weight: 400;
   text-align: center;
 }
+#moon-img{
+  display:none;
+}
+#alien-img{
+  display:none;
+}
 
 #player-img {
   display:  none;

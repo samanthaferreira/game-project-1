@@ -7,7 +7,12 @@ function Alien() {
     x: Math.random()*500,  //chooses random position in x until 500
     y: 0
   };
-
+  self.size = {
+    x:90,
+    y:90
+  };
+  self.image = document.getElementById('alien-img');
+ 
   // @todo self.size = ...
   // @todo alien image
 
@@ -25,8 +30,10 @@ Alien.prototype.update = function () { //updates alien
 
 Alien.prototype.draw = function (ctx) {  //  draws the alien on its current position
   var self = this;
-  ctx.fillStyle = 'blue';
-  ctx.fillRect(self.position.x, self.position.y, 50, 50);
+  ctx.drawImage(self.image, self.position.x ,self.position.y, self.size.x, self.size.y);
+ 
+  //ctx.fillStyle = 'blue';
+  //ctx.fillRect(self.position.x, self.position.y, 50, 50);
 
   // @todo alien image
 
