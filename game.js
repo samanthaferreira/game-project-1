@@ -19,9 +19,10 @@ function Game (parentElement) {  // the local variable parentElement
   self.keyUpHandler = false;
   
   // creates the moon 30 seconds after the game starts
+  // @todo hold on to the self.createMoonTimeoutId so that we can clear that one too in case of collus
   window.setTimeout(function () {  //
     self.moon = new Moon();
-  }, 3000);
+  }, 10000);
 }
 
 // this is clled by main.js immediately adter the game ia created
@@ -140,14 +141,15 @@ Game.prototype.detectMoonLanding = function() {
   var self = this;
 
   if (self.moon && self.moon.position.y === -26){
-    self.finishGame(true);
+    self.isFinished = true;
   }
 };
 
 Game.prototype.destroy = function(didWin){ 
+  var self = this;
   window.clearInterval(self.createAliensIntervalId);
   self.isFinished = true;
-  self.callbackFunction(didWin);
+  (self.didWin);
 };
 
 Game.prototype.destroy = function(){ //destroy game page

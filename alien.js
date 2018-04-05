@@ -8,6 +8,9 @@ function Alien() {
     y: 0
   };
 
+  // @todo self.size = ...
+  // @todo alien image
+
 }
 
 
@@ -24,6 +27,8 @@ Alien.prototype.draw = function (ctx) {  //  draws the alien on its current posi
   var self = this;
   ctx.fillStyle = 'blue';
   ctx.fillRect(self.position.x, self.position.y, 50, 50);
+
+  // @todo alien image
 
 }
 

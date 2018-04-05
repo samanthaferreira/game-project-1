@@ -25,7 +25,10 @@ function main() {
   function createTitleScreen(){
     titleScreen = createHtml(`
       <div class="title-screen">
-        <button>Start Mission!</button>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <p>Mission To The Moon!</p>
+      <button type="button" class="btn btn-default btn-lg btn-block">START MISSION</button>
       </div>
     `);
 
@@ -89,16 +92,30 @@ function main() {
     console.log('creating the game over screen', didWin);
 
     if (didWin) {
+      gameOverScreen = createHtml(
+        `<div class = "game-over">
+          <p>You win!</p>
+          <button> Restart </button>
+        </div>`
+      );
 
     }
     else {
+      gameOverScreen = createHtml(
+      `<div class = "game-over">
+        <p>Game Over!</p>
+        <button> Restart </button>
+      </div>`
+    );
 
     }
 
-    gameOverScreen = createHtml(`<div class = "game-over">
-    <p>Game Over!</p>
-    <button> Restart </button>
-    </div>`);
+    gameOverScreen = createHtml(
+      `<div class = "game-over">
+        <p>Game Over!</p>
+        <button> Restart </button>
+      </div>`
+    );
     
     mainContentElement.appendChild(gameOverScreen);
     restartButton = gameOverScreen.querySelector('button');
@@ -116,9 +133,4 @@ function main() {
   createTitleScreen();
 }
 
-
-main();
-
-//window.addEventListener('load', main); //?
-
-
+window.addEventListener('load', main);

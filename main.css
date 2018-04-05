@@ -1,3 +1,26 @@
 body {
-  background-color: peachpuff;
+  background-image: url('images/ezgif.com-crop.gif');
+  background-position: center;
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
 }
+
+#main-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+p {
+  color:#DC143C;
+  font-size: 70px;
+  font-weight: 400;
+  text-align: center;
+}
+
+#player-img {
+  display:  none;
+}
+
+/* @todo alien image */

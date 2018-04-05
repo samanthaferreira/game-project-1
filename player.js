@@ -4,15 +4,19 @@ function Player () {
   var self = this;
 
   self.position = { //set position
-      x: 0,
-      y: 450,  
-     
-
-  }
-   
+    x: 0,
+    y: 420,  
+  };
+  self.size = {
+    x:45,
+    y:80
+  };
+  self.image = document.getElementById('player-img');
+  
+  self.speed = 3;
   self.rightPressed = false;  //right and left button will start at false 
   self.leftPressed = false;
-  
+
   self.keyDownHandler = function (event){ // when user is holding down the button
     if(event.keyCode ===39){
       self.rightPressed = true;  // true because user is holding button
@@ -34,15 +38,15 @@ function Player () {
 
 Player.prototype.update = function(){  //updates player position
   var self = this;
-  if(self.rightPressed === true){ //updates position when pressed right 
-     if (self.position.x < 450){
-      return self.position.x++; 
-      } else return self.position.x--;
+  if (self.rightPressed === true){ //updates position when pressed right 
+    if (self.position.x < 450){
+      self.position.x = self.position.x + self.speed; 
+    }
   
-    } else if (self.leftPressed === true){  //updates position when pressed left 
-      if (self.position.x >= 0){
-      return self.position.x--;
-    } else return self.position.x++;
+  } else if (self.leftPressed === true){  //updates position when pressed left 
+    if (self.position.x >= 0){
+      self.position.x = self.position.x - self.speed;
+    }
   }
   
 }
@@ -50,6 +54,7 @@ Player.prototype.update = function(){  //updates player position
 
 Player.prototype.draw = function(ctx){  //draws player
   var self = this;
-  ctx.fillStyle = 'red';
-  ctx.fillRect(self.position.x, self.position.y, 50, 50);
-}
+ 
+  // ctx.drawImage(self.image, self.position.x ,self.position.y, self.size.x, self.size.y);
+  ctx.drawImage(self.image, 50, 0, 130, 256, self.position.x ,self.position.y, self.size.x, self.size.y);
+};
