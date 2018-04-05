@@ -2,13 +2,13 @@
 function Alien() {
   var self = this;
 
+
   self.position = {
     x: Math.random()*500,  //chooses random position in x until 500
     y: 0
   };
 
 }
-
 
 
 Alien.prototype.update = function () { //updates alien

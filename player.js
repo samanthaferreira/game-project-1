@@ -5,13 +5,15 @@ function Player () {
 
   self.position = { //set position
       x: 0,
-      y: 450  
+      y: 450,  
+     
+
   }
    
   self.rightPressed = false;  //right and left button will start at false 
   self.leftPressed = false;
   
-  self.keyDownHandler = function (event){ // when use is holding down the button
+  self.keyDownHandler = function (event){ // when user is holding down the button
     if(event.keyCode ===39){
       self.rightPressed = true;  // true because user is holding button
     }else if (event.keyCode === 37){
@@ -32,11 +34,17 @@ function Player () {
 
 Player.prototype.update = function(){  //updates player position
   var self = this;
-  if(self.rightPressed === true){  //updates position when pressed right 
-    return self.position.x++;  
-  } else if (self.leftPressed === true){  //updates position when pressed left 
-    return self.position.x--;
+  if(self.rightPressed === true){ //updates position when pressed right 
+     if (self.position.x < 450){
+      return self.position.x++; 
+      } else return self.position.x--;
+  
+    } else if (self.leftPressed === true){  //updates position when pressed left 
+      if (self.position.x >= 0){
+      return self.position.x--;
+    } else return self.position.x++;
   }
+  
 }
 
 

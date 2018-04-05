@@ -48,10 +48,10 @@ function main() {
 
    var game;
 
-   function gameEnded(){
+  function gameEnded(didWin) {
     destroyGamePage();
-    createGameOver();
-   } 
+    createGameOver(didWin);
+  } 
 
   function createGameScreen(){
     // gameScreen = createHtml(``);
@@ -59,12 +59,14 @@ function main() {
     
     game.build();
     game.start();
-    console.log("im in game screen")
-    // window.setTimeout(gameEnded, 1000) //will call gameEnded ibn 5 secs
+    game.onEnded(function (didWin) {
+      console.log('did user win?', didWin);
+      gameEnded(didWin);
+    }); // this tells THE game to call a function when it's over
   }
 
   function destroyGamePage(){
-     game.destroy();
+    game.destroy();
   }
 
 
@@ -83,7 +85,16 @@ function main() {
 
 
 
-  function createGameOver(){
+  function createGameOver(didWin) {
+    console.log('creating the game over screen', didWin);
+
+    if (didWin) {
+
+    }
+    else {
+
+    }
+
     gameOverScreen = createHtml(`<div class = "game-over">
     <p>Game Over!</p>
     <button> Restart </button>
