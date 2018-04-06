@@ -7,6 +7,8 @@ function Alien() {
     x: Math.random()*500,  //chooses random position in x until 500
     y: 0
   };
+  self.width = 90;
+  self.height = 90;
   self.size = {
     x:90,
     y:90

@@ -91,11 +91,11 @@ function main() {
   function createGameOver(didWin) {
     console.log('creating the game over screen', didWin);
 
-    if (didWin) {
+    /*if (didWin) {
       gameOverScreen = createHtml(
         `<div class = "game-over">
           <p>You win!</p>
-          <button> Restart </button>
+          <button type="button" class="btn btn-default btn-lg btn-block">RESTART</button>
         </div>`
       );
 
@@ -104,16 +104,16 @@ function main() {
       gameOverScreen = createHtml(
       `<div class = "game-over">
         <p>Game Over!</p>
-        <button> Restart </button>
+        <button type="button" class="btn btn-default btn-lg btn-block">RESTART</button>
       </div>`
     );
 
-    }
+    }*/
 
     gameOverScreen = createHtml(
       `<div class = "game-over">
         <p>Game Over!</p>
-        <button> Restart </button>
+        <button type="button" class="btn btn-default btn-lg btn-block">RESTART</button>
       </div>`
     );
     
@@ -122,15 +122,21 @@ function main() {
     restartButton.addEventListener('click', handleRestartClick);
   }
   
-  function destroyGameOverScreen(){
+  function destroyGameOverScreen(didWin){
     gameOverScreen.remove();
     restartButton.removeEventListener('click', handleRestartClick);
 
   }
   
+ 
   // -- START!
 
   createTitleScreen();
 }
 
-window.addEventListener('load', main);
+
+
+
+window.addEventListener('load', main); //?
+
+

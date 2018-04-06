@@ -53,7 +53,7 @@ Game.prototype.start = function(){
   var self = this;
   self.createAliensIntervalId = window.setInterval(function () {  //every second calls new alien
     self.aliens.push(new Alien()); //push new alien to alien array
-  }, 1000);
+  }, 2000);
   self.frame();
 };
 
@@ -106,25 +106,30 @@ Game.prototype.purgeAliens = function(){  //delete aliens that are not visible i
 Game.prototype.detectCollisions = function(){
   var self = this;
   
-  self.aliens.forEach = function(alien){ 
+  self.aliens.forEach(function(aliens){ 
+   
     var player = {
       side1: self.player.position.x,
-      side2: self.player.position.x + self.player.size,
+      side2: self.player.position.x + self.player.width,
       side3: self.player.position.y,
-     side4: self.player.position.y + self.player.size
+      side4: self.player.position.y + self.player.height
     }
     var alien = {
       side1: aliens.position.x,
-      side2: aliens.position.x + aliens.size,
+      side2: aliens.position.x + aliens.width,
       side3: aliens.position.y,
-      side4: aliens.position.y + aliens.size
+      side4: aliens.position.y + aliens.height
     }
-  if(alien.side1 < player.side2 && alien.side2 > player.side1 &&
-  alien.side3 < player.side4 && alien.side4 > player.side3){}
-      
+  
+    if(alien.side1 < player.side2 && alien.side2 > player.side1 && alien.side3 < player.side4 && alien.side4 > player.side3){
+    self.gameOver(true);
     
-  };
+  }
+      
+    })
 };
+
+
 
 Game.prototype.detectMoonLanding = function() {
   var self = this;
