@@ -87,7 +87,7 @@ Game.prototype.frame = function() {
   self.player.draw(self.ctx); //draw player
 
   window.requestAnimationFrame(function () { //makes it animated ?  
-    if (!self.isFinished) {
+    if (!self.isFinished) { 
       self.frame() ;//calls frame function
     }
   });
@@ -106,7 +106,7 @@ Game.prototype.purgeAliens = function(){  //delete aliens that are not visible i
 Game.prototype.detectCollisions = function(){
   var self = this;
   
-  self.aliens.forEach(function(aliens){ 
+  self.aliens.forEach(function(aliens){  //dont put = next to built function
    
     var player = {
       side1: self.player.position.x,
@@ -141,7 +141,7 @@ Game.prototype.detectMoonLanding = function() {
 
 Game.prototype.gameOver = function(didWin){ 
   var self = this;
-  window.clearInterval(self.createAliensIntervalId);
+  window.clearInterval(self.createAliensIntervalId); //will cancel setInterval function when game ends
   self.isFinished = true;
   self.callbackFunction(self.didWin);
 };
