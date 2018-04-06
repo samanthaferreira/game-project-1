@@ -7,8 +7,8 @@ function Player () {
     x: 0,
     y: 420,  
   };
- self.width = 45;
- self.height = 80;
+ self.width = 35;
+ self.height = 70;
   self.size = {
     x:45,
     y:80

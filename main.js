@@ -91,7 +91,7 @@ function main() {
   function createGameOver(didWin) {
     console.log('creating the game over screen', didWin);
 
-    /*if (didWin) {
+    if (didWin) {
       gameOverScreen = createHtml(
         `<div class = "game-over">
           <p>You win!</p>
@@ -108,14 +108,14 @@ function main() {
       </div>`
     );
 
-    }*/
+    }
 
-    gameOverScreen = createHtml(
+   /* gameOverScreen = createHtml(
       `<div class = "game-over">
         <p>Game Over!</p>
         <button type="button" class="btn btn-default btn-lg btn-block">RESTART</button>
       </div>`
-    );
+    );*/
     
     mainContentElement.appendChild(gameOverScreen);
     restartButton = gameOverScreen.querySelector('button');
